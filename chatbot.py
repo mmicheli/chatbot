@@ -3,25 +3,24 @@ import sys
 import os
 import subprocess as sp
 
-class Severina():
+class Maria():
     def __init__(self, name):
         try:
             memory = open(name+'.json', 'r')
         except FileNotFoundError:
             memory = open(name+'.json', 'w')
-            memory.write('[["Severina"], {"Oi": "Olá! Qual seu nome?", "tchau": "Tchau! Tchau!"}]')
+            memory.write('[["Maria"], {"Oi": "Olá! Qual seu nome?", "tchau": "Tchau! Tchau!"}]')
             memory.close()
             memory = open(name+'.json', 'r')
         self.name = name
         self.known, self.phrases = json.load(memory)
         memory.close()
         self.historic = [None]
+    
     def listen(self, phrase=None):
-        if phrase == None:
-            phrase = input('>: ')
-        phrase = str(phrase)
 #        phrase = phrase.lower()
         return phrase
+        
     def think(self, phrase):
         if phrase in self.phrases:
             return self.phrases[phrase]
