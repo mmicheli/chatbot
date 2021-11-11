@@ -9,7 +9,17 @@ class Maria():
             memory = open(name+'.json', 'r')
         except FileNotFoundError:
             memory = open(name+'.json', 'w')
-            memory.write('[["Maria"], {"Oi": "Olá! Qual seu nome?", "tchau": "Tchau! Tchau!"}]')
+            memory.write("""
+                            [
+                                ["Maria"],
+                                {
+                                    "oi": "Olá! Qual seu nome?",
+                                    "tchau": "Tchau! Tchau!",
+                                    "como você está?": "Estou bem!!",
+                                    "qual a sua idade?": "Tenho 20 anos"
+                                }
+                            ]
+                        """)
             memory.close()
             memory = open(name+'.json', 'r')
         self.name = name
@@ -18,9 +28,8 @@ class Maria():
         self.historic = [None]
     
     def listen(self, phrase=None):
-#        phrase = phrase.lower()
-        return phrase
-        
+        return phrase.lower()
+
     def think(self, phrase):
         if phrase in self.phrases:
             return self.phrases[phrase]
